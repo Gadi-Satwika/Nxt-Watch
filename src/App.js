@@ -15,22 +15,38 @@ import './App.css'
 
 // Replace your code here
 class App extends Component {
-  state = {theme: 'light'}
+  state = {theme: 'light', savedVideos: []}
 
   toggleTheme = () => {
-    console.log('Got neat toggle theme')
     this.setState(prevState => ({
       theme: prevState.theme === 'light' ? 'dark' : 'light',
     }))
   }
 
+  saveVideo = video => {
+    const {savedVideos} = this.state
+    const id = savedVideos.filter(each => each.id === video.id)
+    if (id.length === 0) {
+      this.setState(prevState => ({
+        savedVideos: [...prevState.savedVideos, video],
+      }))
+    } else {
+      const tempVideos = savedVideos.filter(each => each.id !== video.id)
+      this.setState({
+        savedVideos: tempVideos,
+      })
+    }
+  }
+
   render() {
-    const {theme} = this.state
+    const {theme, savedVideos} = this.state
     return (
       <ThemeContext.Provider
         value={{
           theme,
           toggleTheme: this.toggleTheme,
+          savedVideos,
+          saveVideo: this.saveVideo,
         }}
       >
         <Switch>

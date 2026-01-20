@@ -52,7 +52,6 @@ class HomePage extends Component {
     })
     const {searchInput} = this.state
     const api = `https://apis.ccbp.in/videos/all?search=${searchInput}`
-    console.log(api)
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       headers: {
@@ -63,7 +62,6 @@ class HomePage extends Component {
     const response = await fetch(api, options)
     if (response.ok === true) {
       const data = await response.json()
-      console.log(data)
       const updatedData = data.videos.map(eachVideo => ({
         id: eachVideo.id,
         title: eachVideo.title,
@@ -189,7 +187,7 @@ class HomePage extends Component {
             <div>
               <Navbar />
               <PageContainer data-testid="home" theme={theme}>
-                <div theme={theme}>
+                <div>
                   <Sidebar />
                 </div>
                 <HomePageHalf>

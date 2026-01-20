@@ -13,7 +13,7 @@ class GamingPage extends Component {
           return (
             <div>
               <Navbar />
-              <div theme={theme}>
+              <div>
                 <Sidebar />
               </div>
             </div>

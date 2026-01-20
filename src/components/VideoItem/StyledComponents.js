@@ -21,7 +21,7 @@ export const VideoItemContainer = styled.div`
 
 export const ThumbNail = styled.img`
   width: 23vw;
-  height: 22vh;
+  height: 27vh;
 
   @media screen and (max-width: 575px) {
     width: 90vw;
@@ -37,7 +37,7 @@ export const ThumbNail = styled.img`
   }
 `
 export const VideoDetails = styled.div`
-  width: 20vw;
+  width: 23vw;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

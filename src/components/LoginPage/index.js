@@ -41,7 +41,6 @@ class LoginPage extends Component {
     const api = 'https://apis.ccbp.in/login'
     const response = await fetch(api, options)
     const data = await response.json()
-    console.log(data)
     if (response.ok === true) {
       Cookies.set('jwt_token', data.jwt_token, {expires: 30})
       const {history} = this.props
@@ -54,7 +53,6 @@ class LoginPage extends Component {
   }
 
   onShowPassword = () => {
-    console.log('Hi')
     this.setState(prevState => ({
       showPassword: !prevState.showPassword,
     }))

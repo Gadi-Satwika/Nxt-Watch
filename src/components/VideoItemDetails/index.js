@@ -1,11 +1,38 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 
+import {formatDistanceToNow} from 'date-fns'
+import Loader from 'react-loader-spinner'
+
+import ReactPlayer from 'react-player'
+
+import {AiOutlineLike, AiOutlineDislike} from 'react-icons/ai'
+import {GiSaveArrow} from 'react-icons/gi'
+
 import Sidebar from '../Sidebar'
 import Navbar from '../Navbar'
 import ThemeContext from '../../ThemeContext'
 
 import {PageContainer} from '../HomePage/StyledComponents'
+
+import {
+  VideoDetails,
+  VideoPlayer,
+  ChannelName,
+  ChannelViews,
+  VideoOptions,
+  VideoOptionButtonsLike,
+  VideoOptionButtonsDislike,
+  VideoOptionButtonsArrow,
+  VideoUserDetails,
+  AboutChannel,
+  UserProfile,
+  SubscriberCount,
+  Name,
+  Description,
+  Title,
+  LoaderContainer,
+} from './StyledComponents'
 
 const status = {
   initial: 'INITIAL',
@@ -15,7 +42,12 @@ const status = {
 }
 
 class VideoItemDetails extends Component {
-  state = {currentStatus: status.initial, videosData: {}}
+  state = {
+    currentStatus: status.initial,
+    videosData: {},
+    like: false,
+    dislike: false,
+  }
 
   componentDidMount() {
     this.renderVideoItemDetails()
@@ -78,16 +110,125 @@ class VideoItemDetails extends Component {
 
   successView = () => {
     const {videosData} = this.state
-    const {title} = videosData
+    const {
+      title,
+      videoUrl,
+      viewCount,
+      publishedAt,
+      description,
+      channel,
+    } = videosData
+    const {name, profileImageUrl, subscriberCount} = channel
+    const dateObj = new Date(publishedAt)
+    const currentDateDistance = formatDistanceToNow(
+      new Date(
+        dateObj.getFullYear(),
+        dateObj.getMonth() + 1,
+        dateObj.getDate(),
+      ),
+    )
     return (
-      <div>
-        <p>{title}</p>
-      </div>
+      <ThemeContext.Consumer>
+        {value => {
+          const {theme} = value
+          const {saveVideo, savedVideos} = value
+          const isPresent = savedVideos.filter(
+            each => each.id === videosData.id,
+          )
+          const videoSaved = isPresent.length !== 0
+          const {like, dislike} = this.state
+          return (
+            <VideoPlayer>
+              <ReactPlayer url={videoUrl} width="100%" height="75vh" controls />
+              <Title theme={theme}>{title}</Title>
+              <VideoDetails>
+                <ChannelViews>
+                  <ChannelName>{viewCount} views</ChannelName>
+                  <ChannelName> . {currentDateDistance}</ChannelName>
+                </ChannelViews>
+                <VideoOptions>
+                  <VideoOptionButtonsLike like={like} onClick={this.likeVideo}>
+                    <AiOutlineLike size={28} />
+                    Like
+                  </VideoOptionButtonsLike>
+                  <VideoOptionButtonsDislike
+                    dislike={dislike}
+                    onClick={this.dislikeVideo}
+                  >
+                    <AiOutlineDislike size={28} />
+                    Dislike
+                  </VideoOptionButtonsDislike>
+                  <VideoOptionButtonsArrow
+                    videoSaved={videoSaved}
+                    onClick={() => saveVideo(videosData)}
+                  >
+                    <GiSaveArrow size={28} />
+                    Save
+                  </VideoOptionButtonsArrow>
+                </VideoOptions>
+              </VideoDetails>
+              <hr />
+              <VideoUserDetails>
+                <UserProfile src={profileImageUrl} />
+                <AboutChannel>
+                  <Name theme={theme}>{name}</Name>
+                  <SubscriberCount>
+                    {subscriberCount} subscribers
+                  </SubscriberCount>
+                  <Description theme={theme}>{description}</Description>
+                </AboutChannel>
+              </VideoUserDetails>
+            </VideoPlayer>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 
+  loadingView = theme => (
+    <LoaderContainer data-testid="loader">
+      <Loader
+        type="ThreeDots"
+        color={theme === 'light' ? '#000000' : '#ffffff'}
+        height="50"
+        width="50"
+      />
+    </LoaderContainer>
+  )
+
+  likeVideo = () => {
+    const {dislike} = this.state
+    if (!dislike) {
+      this.setState(prevState => ({
+        like: !prevState.like,
+      }))
+    } else {
+      this.setState(
+        prevState => ({
+          like: !prevState.like,
+        }),
+        this.dislikeVideo(),
+      )
+    }
+  }
+
+  dislikeVideo = () => {
+    const {like} = this.state
+    if (!like) {
+      this.setState(prevState => ({
+        dislike: !prevState.dislike,
+      }))
+    } else {
+      this.setState(
+        prevState => ({
+          dislike: !prevState.dislike,
+        }),
+        this.likeVideo(),
+      )
+    }
+  }
+
   render() {
-    console.log('video')
     return (
       <ThemeContext.Consumer>
         {value => {
