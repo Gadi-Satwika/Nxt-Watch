@@ -56,3 +56,7 @@ export const Paragraph = styled.p`
     font-size: 14px;
   }
 `
+export const HomePageHalfPart = styled.div`
+  display: flex;
+  flex-direction: column;
+`

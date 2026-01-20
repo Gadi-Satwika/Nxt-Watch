@@ -4,6 +4,10 @@ import Sidebar from '../Sidebar'
 import Navbar from '../Navbar'
 import ThemeContext from '../../ThemeContext'
 
+import RouteHeader from '../RouteHeader'
+
+import {PageContainer, HomePageHalfPart} from './StyledComponents'
+
 class TrendingPage extends Component {
   render() {
     return (
@@ -13,9 +17,14 @@ class TrendingPage extends Component {
           return (
             <div>
               <Navbar />
-              <div>
-                <Sidebar />
-              </div>
+              <PageContainer data-testid="home" theme={theme}>
+                <div>
+                  <Sidebar />
+                </div>
+                <HomePageHalfPart>
+                  <RouteHeader heading="Trending" />
+                </HomePageHalfPart>
+              </PageContainer>
             </div>
           )
         }}

@@ -4,6 +4,7 @@ import Sidebar from '../Sidebar'
 import ThemeContext from '../../ThemeContext'
 import Navbar from '../Navbar'
 import SavedVideoItem from '../SavedVideoItem'
+import RouteHeader from '../RouteHeader'
 
 import {
   PageContainer,
@@ -12,6 +13,7 @@ import {
   NoVideosImage,
   Heading,
   Paragraph,
+  HomePageHalfPart,
 } from './StyledComponents'
 
 class SavedVideosPage extends Component {
@@ -63,7 +65,10 @@ class SavedVideosPage extends Component {
                 <div>
                   <Sidebar />
                 </div>
-                <div>{this.savedVideosPage(savedVideos)}</div>
+                <HomePageHalfPart>
+                  <RouteHeader heading="Saved Videos" />
+                  {this.savedVideosPage(savedVideos)}
+                </HomePageHalfPart>
               </PageContainer>
             </div>
           )

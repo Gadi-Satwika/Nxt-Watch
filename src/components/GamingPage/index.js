@@ -4,6 +4,10 @@ import Sidebar from '../Sidebar'
 import Navbar from '../Navbar'
 import ThemeContext from '../../ThemeContext'
 
+import {HomePageHalfPart, PageContainer} from './StyledComponents'
+
+import RouteHeader from '../RouteHeader'
+
 class GamingPage extends Component {
   render() {
     return (
@@ -13,9 +17,14 @@ class GamingPage extends Component {
           return (
             <div>
               <Navbar />
-              <div>
-                <Sidebar />
-              </div>
+              <PageContainer data-testid="home" theme={theme}>
+                <div>
+                  <Sidebar />
+                </div>
+                <HomePageHalfPart>
+                  <RouteHeader heading="Gaming" />
+                </HomePageHalfPart>
+              </PageContainer>
             </div>
           )
         }}
