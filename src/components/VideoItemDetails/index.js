@@ -103,6 +103,8 @@ class VideoItemDetails extends Component {
     switch (currentStatus) {
       case status.success:
         return this.successView()
+      case status.loading:
+        return this.loadingView()
       default:
         return null
     }
@@ -136,6 +138,7 @@ class VideoItemDetails extends Component {
             each => each.id === videosData.id,
           )
           const videoSaved = isPresent.length !== 0
+          const saveText = videoSaved ? 'saved' : 'save'
           const {like, dislike} = this.state
           return (
             <VideoPlayer>
@@ -163,7 +166,7 @@ class VideoItemDetails extends Component {
                     onClick={() => saveVideo(videosData)}
                   >
                     <GiSaveArrow size={28} />
-                    Save
+                    {saveText}
                   </VideoOptionButtonsArrow>
                 </VideoOptions>
               </VideoDetails>
@@ -185,15 +188,22 @@ class VideoItemDetails extends Component {
     )
   }
 
-  loadingView = theme => (
-    <LoaderContainer data-testid="loader">
-      <Loader
-        type="ThreeDots"
-        color={theme === 'light' ? '#000000' : '#ffffff'}
-        height="50"
-        width="50"
-      />
-    </LoaderContainer>
+  loadingView = () => (
+    <ThemeContext.Consumer>
+      {value => {
+        const {theme} = value
+        return (
+          <LoaderContainer data-testid="loader">
+            <Loader
+              type="ThreeDots"
+              color={theme === 'light' ? '#000000' : '#ffffff'}
+              height="50"
+              width="50"
+            />
+          </LoaderContainer>
+        )
+      }}
+    </ThemeContext.Consumer>
   )
 
   likeVideo = () => {

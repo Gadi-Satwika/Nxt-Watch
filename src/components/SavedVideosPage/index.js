@@ -3,7 +3,7 @@ import {Component} from 'react'
 import Sidebar from '../Sidebar'
 import ThemeContext from '../../ThemeContext'
 import Navbar from '../Navbar'
-import SavedVideoItem from '../SavedVideoItem'
+import SavedVideosItem from '../SavedVideoItem'
 import RouteHeader from '../RouteHeader'
 
 import {
@@ -28,7 +28,7 @@ class SavedVideosPage extends Component {
   successView = savedVideos => (
     <HomePageHalf>
       {savedVideos.map(eachVideo => (
-        <SavedVideoItem eachVideoData={eachVideo} />
+        <SavedVideosItem eachVideoData={eachVideo} />
       ))}
     </HomePageHalf>
   )

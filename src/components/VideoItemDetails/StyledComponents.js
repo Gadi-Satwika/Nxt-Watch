@@ -64,7 +64,7 @@ export const VideoOptionButtonsLike = styled.button`
   display: flex;
   align-items: center;
   font-size: 16px;
-  color: ${props => (props.like ? 'blue' : '#475569')};
+  color: ${props => (props.like ? '#2d6cd1' : '#475569')};
 `
 
 export const VideoOptionButtonsDislike = styled.button`
@@ -74,7 +74,7 @@ export const VideoOptionButtonsDislike = styled.button`
   display: flex;
   align-items: center;
   font-size: 16px;
-  color: ${props => (props.dislike ? 'blue' : '#475569')};
+  color: ${props => (props.dislike ? '#3b82f6' : '#475569')};
 `
 
 export const VideoOptionButtonsArrow = styled.button`
