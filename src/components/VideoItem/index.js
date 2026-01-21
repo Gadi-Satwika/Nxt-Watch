@@ -38,7 +38,7 @@ class VideoItem extends Component {
               <VideoItemContainer theme={theme}>
                 <ThumbNail src={thumbnailUrl} alt="video thumbnail" />
                 <VideoDetails>
-                  <UserProfile src={profileImageUrl} />
+                  <UserProfile src={profileImageUrl} alt="channel logo" />
                   <ChannelDetails>
                     <ChannelTitle theme={theme}>{title}</ChannelTitle>
                     <ChannelName theme={theme}>{name}</ChannelName>

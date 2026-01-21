@@ -43,7 +43,11 @@ class SavedVideosItem extends Component {
           return (
             <StyledLink to={`videos/${id}`}>
               <SavedVideoItem>
-                <ThumbNail src={thumbnailUrl} theme={theme} />
+                <ThumbNail
+                  src={thumbnailUrl}
+                  theme={theme}
+                  alt="video thumbnail"
+                />
                 <VideoDetails>
                   <UserProfile src={profileImageUrl} />
                   <ChannelDetails>

@@ -73,7 +73,7 @@ class TrendingPage extends Component {
     const {outputStatus} = this.state
     switch (outputStatus) {
       case status.success:
-        return this.successView(theme)
+        return this.successView()
       case status.failure:
         return this.failureView(theme)
       case status.loading:
@@ -83,7 +83,7 @@ class TrendingPage extends Component {
     }
   }
 
-  successView = theme => {
+  successView = () => {
     const {videosData} = this.state
     return (
       <HomePageHalf>
@@ -131,12 +131,12 @@ class TrendingPage extends Component {
           return (
             <div>
               <Navbar />
-              <PageContainer data-testid="home" theme={theme}>
+              <PageContainer data-testid="trending" theme={theme}>
                 <div>
                   <Sidebar />
                 </div>
                 <HomePageHalfPart>
-                  <RouteHeader heading="Trending" />
+                  <RouteHeader heading="Trending" data-testid="banner" />
                   {this.displayTrendingVideos(theme)}
                 </HomePageHalfPart>
               </PageContainer>

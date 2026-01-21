@@ -7,7 +7,7 @@ export const HomePageHalfPart = styled.div`
 export const PageContainer = styled.div`
   display: flex;
   background-color: ${props =>
-    props.theme === 'light' ? '#f9f9f9' : '#000000'};
+    props.theme === 'light' ? '#f9f9f9' : '#0f0f0f'};
 `
 
 export const LoaderContainer = styled.div`

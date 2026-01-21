@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const PageContainer = styled.div`
   display: flex;
   background-color: ${props =>
-    props.theme === 'light' ? '#f9f9f9' : '#000000'};
+    props.theme === 'light' ? '#f9f9f9' : '#181818'};
 `
 
 export const VideosDisplayContainer = styled.div`
@@ -70,6 +70,7 @@ export const AppLogo = styled.img`
 export const HomePageHalf = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 `
 
 export const GetNowButton = styled.button`

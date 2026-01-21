@@ -8,7 +8,7 @@ import {FaFire} from 'react-icons/fa'
 import {SiYoutubegaming} from 'react-icons/si'
 import {GiSaveArrow, GiHamburgerMenu} from 'react-icons/gi'
 
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 
 import Popup from 'reactjs-popup'
 
@@ -65,11 +65,14 @@ class Navbar extends Component {
           return (
             <NavBarContainer theme={theme}>
               <HomeLogoContainer>
-                <AppLogo src={logorul} alt="nxt watch logo" />
+                <Link to="/">
+                  <AppLogo src={logorul} alt="website logo" />
+                </Link>
               </HomeLogoContainer>
               <NavItems>
                 <Togglebutton
                   type="button"
+                  data-testid="theme"
                   onClick={() => {
                     toggleTheme()
                   }}

@@ -12,6 +12,11 @@ import {
   StyledNavLink,
   EachListContainer,
   ListItemName,
+  Footer,
+  Contact,
+  Profiles,
+  Logo,
+  Text,
 } from './StyledComponents'
 
 import ThemeContext from '../../ThemeContext'
@@ -53,6 +58,26 @@ class Sidebar extends Component {
                   </EachListContainer>
                 </StyledNavLink>
               </ListContainer>
+              <Footer>
+                <Contact theme={theme}>CONTACT US</Contact>
+                <Profiles>
+                  <Logo
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
+                    alt="facebook logo"
+                  />
+                  <Logo
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
+                    alt="twitter logo"
+                  />
+                  <Logo
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
+                    alt="linked in logo"
+                  />
+                </Profiles>
+                <Text theme={theme}>
+                  Enjoy! Now to see your channels and recommendations!
+                </Text>
+              </Footer>
             </SidebarContainer>
           )
         }}

@@ -5,7 +5,7 @@ export const SavedVideoItem = styled.div`
   display: flex;
   align-items: center;
   height: 30vh;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 5vh;
   margin-bottom: 10vh;
 
@@ -119,7 +119,7 @@ export const VideoDetails = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  padding: 10px;
+  margin-left: 2vw;
 `
 
 export const StyledLink = styled(Link)`

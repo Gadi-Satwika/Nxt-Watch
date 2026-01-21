@@ -141,7 +141,7 @@ class VideoItemDetails extends Component {
           const saveText = videoSaved ? 'saved' : 'save'
           const {like, dislike} = this.state
           return (
-            <VideoPlayer>
+            <VideoPlayer data-testid="videoItemDetails" theme={theme}>
               <ReactPlayer url={videoUrl} width="100%" height="75vh" controls />
               <Title theme={theme}>{title}</Title>
               <VideoDetails>

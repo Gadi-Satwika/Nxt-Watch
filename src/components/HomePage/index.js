@@ -191,8 +191,11 @@ class HomePage extends Component {
                   <Sidebar />
                 </div>
                 <HomePageHalf>
-                  <BannerContainer displayBanner={displayBanner}>
-                    <CloseBanner onClick={this.closeBanner}>
+                  <BannerContainer
+                    displayBanner={displayBanner}
+                    data-testid="banner"
+                  >
+                    <CloseBanner onClick={this.closeBanner} data-testid="close">
                       <IoCloseOutline size={30} />
                     </CloseBanner>
                     <HomeLogoContainer>

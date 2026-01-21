@@ -16,6 +16,9 @@ export const VideoPlayer = styled.div`
   padding: 15px;
   width: 75vw;
 
+  background-color: ${props =>
+    props.theme === 'light' ? '#f9f9f9' : '#0f0f0f'};
+
   @media screen and (max-width: 767px) {
     width: 100vw;
   }
@@ -64,7 +67,7 @@ export const VideoOptionButtonsLike = styled.button`
   display: flex;
   align-items: center;
   font-size: 16px;
-  color: ${props => (props.like ? '#2d6cd1' : '#475569')};
+  color: ${props => (props.like ? '#2563eb' : '#64748b')};
 `
 
 export const VideoOptionButtonsDislike = styled.button`
@@ -74,7 +77,7 @@ export const VideoOptionButtonsDislike = styled.button`
   display: flex;
   align-items: center;
   font-size: 16px;
-  color: ${props => (props.dislike ? '#3b82f6' : '#475569')};
+  color: ${props => (props.like ? '#2563eb' : '#64748b')};
 `
 
 export const VideoOptionButtonsArrow = styled.button`
@@ -84,7 +87,7 @@ export const VideoOptionButtonsArrow = styled.button`
   display: flex;
   align-items: center;
   font-size: 16px;
-  color: ${props => (props.videoSaved ? 'darkblue' : '#475569')};
+  color: ${props => (props.like ? '#2563eb' : '#64748b')};
 `
 export const VideoUserDetails = styled.div`
   display: flex;

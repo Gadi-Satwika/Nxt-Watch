@@ -9,7 +9,7 @@ export const SidebarContainer = styled.div`
     props.theme === 'light' ? '#f9f9f9' : '#181818'};
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Helpful if you add footer later */
+  justify-content: space-between; /* Helpful if you add footer later */
 
   @media screen and (max-width: 767px) {
     display: none;
@@ -64,4 +64,32 @@ export const EachListContainer = styled.li`
     background-color: ${props =>
       props.theme === 'light' ? '#424242' : '#e2e8f0'};
   }
+`
+
+export const Footer = styled.div`
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`
+
+export const Logo = styled.img`
+  width: 3vw;
+  height: 7vh;
+`
+
+export const Contact = styled.h1`
+  font-size: 28px;
+  color: ${props => (props.theme === 'light' ? '#475569' : '#f9f9f9')};
+`
+
+export const Profiles = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 12vw;
+`
+
+export const Text = styled.p`
+  color: ${props => (props.theme === 'light' ? '#475569' : '#f9f9f9')};
+  width: 15vw;
 `

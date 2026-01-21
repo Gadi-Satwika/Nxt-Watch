@@ -61,12 +61,12 @@ class SavedVideosPage extends Component {
           return (
             <div>
               <Navbar />
-              <PageContainer data-testid="home" theme={theme}>
+              <PageContainer data-testid="savedVideos" theme={theme}>
                 <div>
                   <Sidebar />
                 </div>
                 <HomePageHalfPart>
-                  <RouteHeader heading="Saved Videos" />
+                  <RouteHeader heading="Saved Videos" data-testid="banner" />
                   {this.savedVideosPage(savedVideos)}
                 </HomePageHalfPart>
               </PageContainer>

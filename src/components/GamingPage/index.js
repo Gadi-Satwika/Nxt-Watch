@@ -69,7 +69,7 @@ class GamingPage extends Component {
     const {outputStatus} = this.state
     switch (outputStatus) {
       case status.success:
-        return this.successView(theme)
+        return this.successView()
       case status.failure:
         return this.failureView(theme)
       case status.loading:
@@ -79,7 +79,7 @@ class GamingPage extends Component {
     }
   }
 
-  successView = theme => {
+  successView = () => {
     const {videosData} = this.state
     return (
       <HomePageHalf>
@@ -127,12 +127,12 @@ class GamingPage extends Component {
           return (
             <div>
               <Navbar />
-              <PageContainer data-testid="home" theme={theme}>
+              <PageContainer data-testid="gaming" theme={theme}>
                 <div>
                   <Sidebar />
                 </div>
                 <HomePageHalfPart>
-                  <RouteHeader heading="Gaming" />
+                  <RouteHeader heading="Gaming" data-testid="banner" />
                   {this.displayGamingVideos(theme)}
                 </HomePageHalfPart>
               </PageContainer>
